@@ -1,4 +1,4 @@
-TARGET_KERNEL_VERSION := 3.18
+TARGET_KERNEL_VERSION := 4.4
 $(call inherit-product, device/qcom/common/common64.mk)
 
 PRODUCT_NAME := msmcobalt
