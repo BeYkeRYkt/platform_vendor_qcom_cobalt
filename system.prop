@@ -140,6 +140,9 @@ ro.nfc.port=I2C
 #enable dsp gapless mode by default
 audio.offload.gapless.enabled=true
 
+#enable dsp path delay query
+audio.playback.dsp.pathdelay=true
+
 #initialize QCA1530 detection
 sys.qca1530=detect
 
