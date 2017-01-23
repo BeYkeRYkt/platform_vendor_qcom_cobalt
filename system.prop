@@ -106,6 +106,9 @@ persist.audio.fluence.voicecall=true
 persist.audio.fluence.voicerec=false
 persist.audio.fluence.speaker=true
 
+# system prop for compress passthrough
+audio.offload.passthrough=1
+
 #system prop for RmNet Data
 persist.rmnet.data.enable=true
 persist.data.wda.enable=true
