@@ -48,9 +48,6 @@ persist.mm.enable.prefetch=true
 # Additional buffers shared between Camera and Video
 vidc.enc.dcvs.extra-buff-count=2
 
-# Set default power mode to low power for encoder
-vidc.debug.perf.mode=2
-
 #
 # system props for the data modules
 #
@@ -70,6 +67,8 @@ ro.opengles.version=196610
 
 # system property for maximum number of HFP client connections
 bt.max.hfpclient.connections=1
+#force disable Bluetooth AAC by default
+persist.bt.a2dp.aac_disable=true
 
 # System property for cabl
 ro.qualcomm.cabl=2
@@ -108,6 +107,13 @@ persist.data.df.mux_count=8
 persist.data.df.iwlan_mux=9
 persist.data.df.dev_name=rmnet_usb0
 
+#
+# system property determining camera HAL to be used for a Video call
+#
+# 1 is camera1
+# 2 or anything else is camera2
+persist.radio.VT_CAM_INTERFACE=2
+
 #property to enable user to access Google WFD settings
 persist.debug.wfd.enable=1
 ##property to choose between virtual/external wfd display
@@ -115,6 +121,9 @@ persist.sys.wfd.virtual=0
 
 # system prop for NFC DT
 ro.nfc.port=I2C
+
+#property for vendor specific library
+ro.vendor.at_library=libqti-at.so
 
 #min/max cpu in core control
 ro.core_ctl_min_cpu=2
@@ -156,6 +165,8 @@ ro.qti.sensors.mot_detect=true
 ro.qti.sensors.dpc=true
 #MultiShake sensor
 ro.qti.sensors.multishake=true
+#IOD sensor
+ro.qti.sensors.iod=true
 
 #Enable stm events
 persist.debug.coresight.config=stm-events
@@ -167,4 +178,4 @@ persist.ts.rtmakeup=false
 ro.cutoff_voltage_mv=3200
 
 #Expose aux camera for below packages
-camera.aux.packagelist=org.codeaurora.snapcam
+camera.aux.packagelist=org.codeaurora.snapcam,com.qualcomm.saltproject,com.qualcomm.saltproject2
