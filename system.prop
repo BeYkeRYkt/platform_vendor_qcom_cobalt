@@ -106,6 +106,9 @@ persist.audio.fluence.voicecall=true
 persist.audio.fluence.voicerec=false
 persist.audio.fluence.speaker=true
 
+# system prop for compress passthrough
+audio.offload.passthrough=1
+
 #system prop for RmNet Data
 persist.rmnet.data.enable=true
 persist.data.wda.enable=true
@@ -139,6 +142,9 @@ ro.nfc.port=I2C
 
 #enable dsp gapless mode by default
 audio.offload.gapless.enabled=true
+
+#enable dsp path delay query
+audio.playback.dsp.pathdelay=true
 
 #initialize QCA1530 detection
 sys.qca1530=detect
