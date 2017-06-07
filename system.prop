@@ -131,6 +131,9 @@ tunnel.audio.encode = true
 #Buffer size in kbytes for compress offload playback
 audio.offload.buffer.size.kb=32
 
+#Buffer size in kbytes for TrueHD compress pass-through playback
+audio.truehd.buffer.size.kb=16
+
 #Enable offload audio video playback by default
 av.offload.enable=true
 
