@@ -149,6 +149,9 @@ audio.offload.gapless.enabled=true
 #enable dsp path delay query
 audio.playback.dsp.pathdelay=true
 
+#enable matrix limiter
+audio.matrix.limiter.enable=1
+
 #initialize QCA1530 detection
 sys.qca1530=detect
 
