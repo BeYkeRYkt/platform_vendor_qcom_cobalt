@@ -32,6 +32,7 @@ on early-init
     mkdir /bt_firmware 0771 system system
     symlink /data/tombstones /tombstones
     mkdir /dsp 0771 media media
+    write /proc/sys/kernel/sched_boost 1
 
 on init
     write /dev/stune/foreground/schedtune.sched_boost_no_override 1
@@ -120,8 +121,7 @@ on boot
    insmod /system/lib/modules/msm-vidc-table-gov.ko
 
 #Load WLAN driver
-   insmod /system/lib/modules/qca_cld3/qca_cld3_wlan.ko
-   setprop wlan.driver.status "ok"
+   insmod /vendor/lib/modules/qca_cld3/qca_cld3_wlan.ko
 
 #Peripheral manager
 service per_mgr /vendor/bin/pm-service
@@ -141,6 +141,9 @@ on property:init.svc.per_mgr=running
 
 on property:sys.shutdown.requested=*
     stop per_proxy
+
+on charger
+    start hvdcp_opti
 
 #on post-fs
 #    export LD_PRELOAD /vendor/lib/libNimsWrap.so
@@ -203,10 +206,6 @@ service thermal-engine /system/vendor/bin/thermal-engine
 #    class core
 #    oneshot
 #
-service time_daemon /system/vendor/bin/time_daemon
-   class late_start
-   user root
-   group root
 
 service adsprpcd /system/vendor/bin/adsprpcd
    class main
@@ -363,7 +362,7 @@ service ims_rtp_daemon /system/vendor/bin/ims_rtp_daemon
    group radio diag inet log
    disabled
 
-service imscmservice /system/vendor/bin/imscmservice
+service imsrcsservice /system/vendor/bin/imsrcsd
    class main
    user system
    group radio diag inet log
@@ -371,7 +370,7 @@ service imscmservice /system/vendor/bin/imscmservice
 
 on property:sys.ims.DATA_DAEMON_STATUS=1
     start ims_rtp_daemon
-    start imscmservice
+    start imsrcsservice
 #
 
 service ppd /vendor/bin/mm-pp-dpps
@@ -434,3 +433,8 @@ service mdtpd /system/vendor/bin/mdtpd
     class late_start
     user root
     group system radio drmrpc
+
+service hvdcp_opti /system/vendor/bin/hvdcp_opti
+    class main
+    user root
+    group system wakelock
