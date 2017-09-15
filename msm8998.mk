@@ -131,6 +131,10 @@ PRODUCT_PACKAGES += android.hardware.media.omx@1.0-impl
 PRODUCT_COPY_FILES += \
     device/qcom/msm8998/sensors/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf
 
+# Exclude TOF sensor from InputManager
+PRODUCT_COPY_FILES += \
+    device/qcom/msm8998/excluded-input-devices.xml:system/etc/excluded-input-devices.xml
+
 # WLAN host driver
 ifneq ($(WLAN_CHIPSET),)
 PRODUCT_PACKAGES += $(WLAN_CHIPSET)_wlan.ko
@@ -173,6 +177,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     vendor.display.color@1.0-service \
     vendor.display.color@1.0-impl
+
+# Android_net
+PRODUCT_PACKAGES += \
+    libandroid_net \
+    libandroid_net_32
 
 # Vibrator
 PRODUCT_PACKAGES += \
@@ -286,3 +295,9 @@ PRODUCT_PROPERTY_OVERRIDES += rild.libpath=/system/vendor/lib64/libril-qc-qmi-1.
 # Change to dlkm when dlkm feature is fully enabled
 KERNEL_MODULES_INSTALL := system
 KERNEL_MODULES_OUT := out/target/product/$(PRODUCT_NAME)/$(KERNEL_MODULES_INSTALL)/lib/modules
+#VR
+PRODUCT_PACKAGES += android.hardware.vr@1.0-impl \
+                    android.hardware.vr@1.0-service
+#Thermal
+PRODUCT_PACKAGES += android.hardware.thermal@1.0-impl \
+                    android.hardware.thermal@1.0-service
