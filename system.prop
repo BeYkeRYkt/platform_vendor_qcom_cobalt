@@ -30,7 +30,7 @@ persist.demo.hdmirotationlock=false
 
 #ro.hdmi.enable=true
 #persist.speaker.prot.enable=false
-#qcom.hw.aac.encoder=true
+#vendor.audio.hw.aac.encoder=true
 #
 # system props for the cne module
 #
@@ -98,16 +98,17 @@ ro.bluetooth.wipower=true
 #
 #snapdragon value add features
 #
-ro.qc.sdk.audio.ssr=false
+ro.vendor.audio.sdk.ssr=false
 
 ##fluencetype can be "fluence" or "fluencepro" or "none"
-ro.qc.sdk.audio.fluencetype=none
-persist.audio.fluence.voicecall=true
-persist.audio.fluence.voicerec=false
-persist.audio.fluence.speaker=true
+ro.vendor.audio.sdk.fluencetype=none
+persist.vendor.audio.fluence.voicecall=false
+persist.vendor.audio.fluence.voicerec=false
+persist.vendor.audio.fluence.speaker=false
+persist.vendor.audio.fluence.audiorec=false
 
 # system prop for compress passthrough
-audio.offload.passthrough=1
+vendor.audio.offload.passthrough=1
 
 #system prop for RmNet Data
 persist.rmnet.data.enable=true
@@ -126,25 +127,25 @@ persist.debug.wfd.enable=1
 persist.sys.wfd.virtual=0
 
 # enable tunnel encoding for amrwb
-tunnel.audio.encode = true
+vendor.audio.tunnel.encode = true
 
 #Buffer size in kbytes for compress offload playback
-audio.offload.buffer.size.kb=32
+vendor.audio.offload.buffer.size.kb=32
 
 #Buffer size in kbytes for TrueHD compress pass-through playback
 audio.truehd.buffer.size.kb=16
 
 #Enable offload audio video playback by default
-av.offload.enable=true
+audio.offload.video=true
 
 #enable voice path for PCM VoIP by default
-use.voice.path.for.pcm.voip=true
+vendor.voice.path.for.pcm.voip=true
 
 # system prop for NFC DT
 ro.nfc.port=I2C
 
 #enable dsp gapless mode by default
-audio.offload.gapless.enabled=true
+vendor.audio.offload.gapless.enabled=true
 
 #enable dsp path delay query
 audio.playback.dsp.pathdelay=1
@@ -153,12 +154,12 @@ audio.playback.dsp.pathdelay=1
 audio.matrix.limiter.enable=1
 
 #enable ms12 properties
-audio.qaf.library=/usr/lib/libdolby_ms12_wrapper.so
-audio.qaf.reencode=false
-audio.qaf.hdmi.out=ddp
-audio.qaf.manufacturer=212646214
-audio.qaf.acdbid=500
-audio.offload.multiple.enabled=1
+vendor.audio.qaf.library=/usr/lib/libdolby_ms12_wrapper.so
+vendor.audio.qaf.reencode=false
+vendor.audio.qaf.hdmi.out=ddp
+vendor.audio.qaf.manufacturer=212646214
+vendor.audio.qaf.acdbid=500
+vendor.audio.offload.multiple.enabled=1
 
 #initialize QCA1530 detection
 sys.qca1530=detect
